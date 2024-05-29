@@ -1,0 +1,550 @@
+/* Start Global Variables*/
+:root {
+    --main-color: #10cab7;
+    --secondary-color: #2c4755;
+    --section-padding: 60px;
+    --section-background-color: #F6F6F6;
+    --section-margin-top: 100px;
+    --main-transition: 0.3s;
+}
+
+/* End Global Variables */
+/* Start Global Rules */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Work Sans", sans-serif;
+}
+
+.parent {
+    background-color: #eee;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Small */
+@media (min-width :768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+/* Medium */
+@media (min-width :992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+/* large */
+@media (min-width :1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+/* End Global Rules*/
+/* Start Components */
+
+.special-heading {
+    color: #ebeced;
+    font-size: 100px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: -3px;
+    /*بدنا نقلل الليتر سبيسنغ عشان الكلام يلزق ببعضه شوي */
+    margin: 0;
+}
+
+.special-heading+p {
+    margin: -30px 0 0;
+    text-align: center;
+    font-size: 20px;
+    color: #797979;
+}
+
+/*عشان يصغر الهيدنغ والمارجن تبع البي لما تصغر الشاشة لميديوم */
+@media (max-width : 767px) {
+    .special-heading {
+        font-size: 60px;
+    }
+
+    .special-heading+p {
+        margin-top: -15px;
+    }
+}
+
+/* End Componenets */
+
+/* Start Header */
+.header {
+    padding: 20px;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .logo {
+    width: 60px;
+}
+
+.header .links {
+    position: relative;
+}
+
+/* لما اجي اعمل هوفر على اللينكس الابن الثاني بالسبان يتمدد ل %100 */
+.header .links:hover .icon span:nth-child(2) {
+    width: 100%;
+}
+
+/* هاي الايكون الرئيسية اللي بدي احط فيها اللينكات bars*/
+.header .links .icon {
+    width: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    /* هون عشان اخلي كل بار لما يملا الشاشة الثاني ينزل لتحت */
+    justify-content: flex-end;
+    /* هون عشان يخلي البار شكله رايح لليمين  */
+
+}
+
+.header .links .icon span {
+    background-color: #333;
+    margin-bottom: 5px;
+    height: 2px;
+    /* عشان ما يلزقو ببعض ويكون في مسافات بيناتهن */
+}
+
+.header .links .icon span:first-child {
+    width: 100%;
+}
+
+.header .links .icon span:nth-child(2) {
+    width: 60%;
+    transition: var(--main-transition);
+}
+
+.header .links .icon span:last-child {
+    width: 100%;
+}
+
+.header .links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: var(--section-background-color);
+    position: absolute;
+    /*عشان نوزعها بالايكونن بالوضع المطلق */
+    right: 0;
+    /*عشان ما تطلع برا الشاشة ويصير سكرول */
+    min-width: 200px;
+    top: calc(100% + 15px);
+    /*هاي عشان احطله مساحة من فوق ع اساس بس اعمل هوفر يكون نازل لتحت الايكون مش ملزق فيها */
+    z-index: 1;
+    /*حطينا الزد اندكس عشان ما تظهر اليو ال تحت الصورة بس عشان تظهر فوقيها */
+    display: none;
+}
+
+.header .links ul::before {
+    content: "";
+    position: absolute;
+    right: 5px;
+    top: -20px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent var(--section-background-color) transparent;
+    /* هاي الجزئية عملها عشان يبين عنا مثلث صغير فوق اللينكات من جهة الايقونة*/
+}
+
+/* هون عشان يما اعمل هوفر على اللينكس اليو ال تظهر ك بلوك */
+.header .links:hover ul {
+    display: block;
+}
+
+.header .links ul li a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #222;
+    transition: var(--main-transition);
+}
+
+.header .links ul li a:hover {
+    padding-left: 25px;
+    /*هو معموله بادنغ من كل الجهات لكن انا بدي اخلي بادنغ من جهة اليسار فقط لما اعمل هوفر */
+}
+
+.header .links ul li:not(:last-child) a {
+    border-bottom: 1px solid #DDD;
+}
+
+/* End Header */
+/* Start Landing Section */
+.landing {
+    background-image: url(../assets/mountain.jpg);
+    background-size: cover;
+    height: calc(100vh - 64px);
+    /*هون حسب ارتفاع الصورة كاملة ناقص الارتفاع الافتراضي تبع الهيدر */
+    position: relative;
+    /* عالدفتر شرحها دقيقة 41 و 47 ثانية */
+}
+
+.landing .intro-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 320px;
+    max-width: 100%;
+    /* عشان ما يطلع عن الوديث الاصلي اللي انا محدده باختلاف انواع الشاشات اللي عندي اياها */
+}
+
+.landing .intro-text h1 {
+    margin: 0;
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.landing .intro-text p {
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+/* End Landing Section */
+/* Start Features Section */
+.features {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color: var(--section-background-color);
+}
+
+.features .container {
+    display: grid;
+    /* في شرح الها عالدفتر وكمان على الواتس بويب سايت*/
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.features .feat {
+    padding: 20px;
+    text-align: center;
+}
+
+.features .feat i {
+    color: var(--main-color);
+}
+
+.features .feat h3 {
+    line-height: 2;
+    font-weight: 800;
+    /*هون على حسب الخط اللي عملناله امبورت من الجوجل */
+    margin: 30px 0;
+    /*فوق وتحت 30 ويمين وشمال 0 */
+}
+
+.features .feat p {
+    line-height: 1.6;
+    font-size: 17px;
+    color: #777;
+}
+
+/* End Features Section */
+/* Start Sercices */
+.services {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+
+.services .services-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: var(--section-margin-top);
+}
+
+.services .services-content .srv {
+    display: flex;
+    /*هون عشان اخلى الايكون جنب الخط بالزبط */
+    margin-bottom: 40px;
+    /* افصل بين كل رو فيه سرفز*/
+}
+
+@media (max-width :767px) {
+    .services .services-content .srv {
+        flex-direction: column;
+        text-align: center;
+        /*عالموبايل يكونو تحت بعض مش جنب بعض */
+    }
+}
+
+/* هون بدي ازبط الايكون تبعت السرف */
+.services .services-content .srv i {
+    color: var(--main-color);
+    flex-basis: 60px;
+    /* الهدف منه انه يخليه يتعامل مع الايقونة كطول وعرض*/
+}
+
+.services .services-content .srv .text {
+    flex: 1;
+    /* حطيناه عشان يسيب مساحة بينه وبين الايقونة*/
+}
+
+.services .services-content .srv .text h3 {
+    margin: 0 0 20px;
+    /* لحتى يكون متوازي مع الايكونز اللي جنبه */
+}
+
+.services .services-content .srv .text p {
+    color: #444;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.services .services-content .image {
+    position: relative;
+    text-align: center;
+}
+
+.services .services-content .image::before {
+    content: " ";
+    background-color: var(--secondary-color);
+    width: 80px;
+    height: calc(100% + 100px);
+    /*بداية رح يطلع طوله 100  حسب طول الصورة بس انا بدي اياه يكون اكبر من طول الصورة نفسها فبحط الكالك زائد 100بكسل */
+    position: absolute;
+    right: 0;
+    top: -50px;
+    /*لما زودت 100 الخط امتد لتحت لكن انا بدي اياه بالنص ف بحط -50 يعني نص فوق ونص تحت */
+    z-index: -1;
+}
+
+.services .services-content .image img {
+    width: 260px;
+}
+
+/*الان بدي اتحكم متى تظهر الصورة مع العمود اللي وراها بستخدم الميديا */
+@media (max-width :1199px) {
+    .image-column {
+        display: none;
+    }
+}
+
+/* End Sercices  */
+/* Start Portfolio */
+.portfolio {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color: var(--section-background-color);
+}
+
+.portfolio .portfolio-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 80px;
+
+}
+
+.portfolio .portfolio-content .card {
+    background-color: white;
+}
+
+.portfolio .portfolio-content .card img {
+    width: 100%;
+    height: 200px;
+}
+
+.portfolio .portfolio-content .card .info {
+    padding: 20px;
+}
+
+.portfolio .portfolio-content .card .info h3 {
+    margin: 0;
+    /*عشان اعرف العناصر بتبدأ من وين وما اخلى المارجن هو اللي يتحكم بموقع عرض العنصر جوا الكارد */
+}
+
+.portfolio .portfolio-content .card .info p {
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* End Portfolio */
+/* Start About  */
+.about {
+    padding-top: var(--section-padding);
+    padding-bottom: calc(var(--section-padding) + 60px);
+    /* ما غيرت قيمة الفار الاصلية*/
+}
+
+.about .about-content {
+    margin-top: var(--section-margin-top);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media (max-width : 991px) {
+    .about .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.about .about-content .image {
+    position: relative;
+    width: 320;
+    height: 427;
+}
+
+.about .about-content .image::before {
+    position: absolute;
+    content: "";
+    background-color: #ebeced;
+    height: calc(100% + 80px);
+    width: 100px;
+    top: -40px;
+    left: -20px;
+    z-index: -1;
+}
+
+.about .about-content .image::after {
+    position: absolute;
+    content: "";
+    height: 360px;
+    width: 120px;
+    border-left: 80px solid var(--main-color);
+    border-bottom: 80px solid var(--main-color);
+    z-index: -1;
+    right: -150px;
+    top: -20px
+}
+
+@media (max-width : 991px) {
+
+    .about .about-content .image::before,
+    .about .about-content .image::after {
+        display: none;
+    }
+
+}
+
+.about .about-content .image img {
+    max-width: 100%;
+}
+
+@media (max-width : 991px) {
+    .about .about-content .image img {
+        margin: 0 auto 60px;
+    }
+}
+
+.about .about-content .text {
+    flex-basis: calc(100% - 500px);
+}
+
+.about .about-content .text p:first-of-type {
+    font-weight: bold;
+    line-height: 2;
+    margin-bottom: 50px;
+}
+
+.about .about-content .text hr {
+    display: inline-block;
+    border-color: var(--main-color);
+    width: 50%;
+
+}
+
+.about .about-content .text p:last-of-type {
+    line-height: 2;
+    color: #777;
+}
+
+/* End About  */
+/* Start Contact  */
+.contact {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color: var(--section-background-color);
+}
+
+.contact .info {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    /*ممكن استبدلهم بمارجن عادي واغير على القيمة بس او ممكن اخلبيه بادنغ لحال */
+    text-align: center;
+}
+
+.contact .info .label {
+    font-size: 35px;
+    font-weight: 800;
+    color: var(--secondary-color);
+    letter-spacing: -2px;
+    margin-bottom: 15px;
+}
+
+.contact .info .link {
+    display: block;
+    color: var(--main-color);
+    text-decoration: none;
+    font-size: 35px;
+    font-weight: 800;
+}
+
+.contact .info .social {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.contact .info .social i {
+    margin-left: 10px;
+    color: var(--secondary-color);
+}
+
+/*هاي جطيناها عشان الخط على الشاشات الصغيرة محتاج انه يصغر شوي وفيه مشكلة بسيطة جدا */
+@media (max-width : 767px) {
+
+    .contact .info .link,
+    .contact .info .label {
+        font-size: 25px;
+    }
+}
+
+/* End Contact  */
+/* Start Footer */
+.footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 30px 10px;
+    text-align: center;
+    font-size: 18px;
+
+}
+
+.footer span {
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+/* End Footer */
